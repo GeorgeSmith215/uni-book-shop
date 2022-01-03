@@ -30,8 +30,8 @@ module.exports = (vm) => {
 		// 根据custom参数中配置的是否需要token，添加对应的请求头
 		if(config?.custom?.auth) {
 			// 可以在此通过vm引用vuex中的变量，具体值在vm.$store.state中
-			config.header.Authorization = "Bearer " + vm.$store.state.access_token;
-			// console.log(vm);
+			// config.header.Authorization = "Bearer " + vm.$store.state.access_token;
+			config.header.Authorization = "Bearer " + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLnNob3AuZWR1d29yay5jblwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MTExMTgxOSwiZXhwIjoxNjQxNDcxODE5LCJuYmYiOjE2NDExMTE4MTksImp0aSI6IlFzQVg0akp0RFZ4bVR1NkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7vCvrMK7Qpq6nRpc7gHszw58k17GBa1UvQFiq9Oqpls';
 		}
 	    return config 
 	}, config => { // 可使用async await 做异步操作
@@ -62,7 +62,7 @@ module.exports = (vm) => {
 		return data === undefined ? {} : data
 	}, (response) => { 
 		// 对响应错误做点什么 （statusCode !== 200）
-		const {statusCode} = response;
+		const {statusCode,data} = response;
 		if (statusCode === 400){
 			// 错误请求
 			uni.$u.toast(data.message);
@@ -79,11 +79,22 @@ module.exports = (vm) => {
 			// return false;
 		}
 		else if(statusCode === 422){
-			// 422为表单验证未通过
+			// 422为表单验证未通过,错误信息一般只取第一个
 			const {errors} = data;
+			// console.log(errors);
 			uni.$u.toast(Object.values(errors)[0][0]);
 			// return false;
 		}
 		return Promise.reject(response);
-	})
+	});
+	
+	//增加patch请求
+	vm.$u.http.patch = (url,params = {},header = {}) =>{
+		// 模拟patch请求
+		const _params = {
+			...params,
+			_method:'PATCH'
+		}
+		return vm.$u.http.post(url,_params);
+	}
 }

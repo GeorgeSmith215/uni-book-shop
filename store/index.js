@@ -12,7 +12,7 @@ try{
 }
 
 // 需要永久存储，且下次APP启动需要取出的，在state中的变量名
-let saveStateKeys = ['userInfo', 'access_token'];
+let saveStateKeys = ['vuex_userInfo', 'vuex_access_token','vuex_name'];
 
 // 保存变量到本地存储中
 const saveLifeData = function(key, value){
@@ -32,10 +32,11 @@ const store = new Vuex.Store({
 	state: {
 		// 如果上面从本地获取的lifeData对象下有对应的属性，就赋值给state中对应的变量
 		// 加上vuex_前缀，是防止变量名冲突，也让人一目了然
-		userInfo: lifeData.userInfo ? lifeData.userInfo : {name: '明月'},
-		access_token: lifeData.access_token ? lifeData.access_token : 'xxxxx',
+		vuex_userInfo: lifeData.vuex_userInfo ? lifeData.vuex_userInfo : {name: '明月'},
+		vuex_access_token: lifeData.vuex_access_token ? lifeData.vuex_access_token : 'xxxxx',
 		// 如果vuex_version无需保存到本地永久存储，无需lifeData.vuex_version方式
 		vuex_version: '1.0.1',
+		vuex_name: lifeData.vuex_name ? lifeData.vuex_name :''
 	},
 	mutations: {
 		$uStore(state, payload) {
@@ -43,10 +44,11 @@ const store = new Vuex.Store({
 			let nameArr = payload.name.split('.');
 			let saveKey = '';
 			let len = nameArr.length;
-			console.log(state);
-			console.log(payload);
+			// console.log(state);
+			// console.log(payload);
 			if(nameArr.length >= 2) {
 				let obj = state[nameArr[0]];
+				// 循环取出例如user.info.score中的值
 				for(let i = 1; i < len - 1; i ++) {
 					obj = obj[nameArr[i]];
 				}

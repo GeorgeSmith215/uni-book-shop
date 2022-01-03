@@ -18,6 +18,10 @@ const app = new Vue({
 })
 // 引入请求封装，将app参数传递到配置中
 require('@/config/request.js')(app)
+
+import httpApi from '@/config/http.api.js'
+Vue.use(httpApi, app)
+
 app.$mount()
 // #endif
 
