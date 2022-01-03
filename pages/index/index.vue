@@ -11,8 +11,18 @@
 				title: 'Hello'
 			}
 		},
-		onLoad() {
-
+		async onLoad() {
+			// 如果想要在http请求异常的时候代码还能继续运行，则需要使用try，catch
+			// try{
+			// 	const res = await uni.$u.http.post('/api/auth/wx/bind');
+			// 	console.log(res);
+			//  console.log('1122');
+			// }catch(e){
+				
+			// }
+			const res = await uni.$u.http.post('/api/auth/wx/bind');
+			console.log(res);
+			console.log('1122');
 		},
 		methods: {
 
@@ -21,29 +31,4 @@
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
 </style>
