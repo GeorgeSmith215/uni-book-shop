@@ -1,5 +1,5 @@
 import App from './App'
-// 假设您项目中已使用VueX
+// 引入Vuex
 import store from '@/store'
 Vue.prototype.$store = store
 let vuexStore = require("@/store/$u.mixin.js");

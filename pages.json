@@ -17,6 +17,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/goods/goods",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/cart/cart",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "购物车",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -26,18 +44,28 @@
 	},
 	"tabBar": {
 	    "color": "#7A7E83",
-	    "selectedColor": "#3cc51f",
+	    "selectedColor": "#1296db",
 	    "borderStyle": "black",
 	    "backgroundColor": "#ffffff",
 	    "list": [{
 	        "pagePath": "pages/index/index",
-	        "iconPath": "static/image/home.png",
-	        "selectedIconPath": "static/image/home_s.png",
+	        "iconPath": "static/icon/home.png",
+	        "selectedIconPath": "static/icon/home_s.png",
 	        "text": "首页"
-	    }, {
+	    },{
+	        "pagePath": "pages/goods/goods",
+	        "iconPath": "static/icon/goods.png",
+	        "selectedIconPath": "static/icon/goods_s.png",
+	        "text": "商品"
+	    },{
+	        "pagePath": "pages/cart/cart",
+	        "iconPath": "static/icon/cart.png",
+	        "selectedIconPath": "static/icon/cart_s.png",
+	        "text": "购物车"
+	    },{
 	        "pagePath": "pages/center/center",
-	        "iconPath": "static/image/user.png",
-	        "selectedIconPath": "static/image/user_s.png",
+	        "iconPath": "static/icon/user.png",
+	        "selectedIconPath": "static/icon/user_s.png",
 	        "text": "我"
 	    }]
 	}
