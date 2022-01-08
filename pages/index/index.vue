@@ -30,25 +30,25 @@
 					col="2"
 			>
 				<u-grid-item
-						v-for="(goodsItem,goodsIndex) in goods"
+						v-for="(goodsItem,goodsIndex) in goods.length !== 0 ?goods:8"
 						:key="goodsIndex"
 				>
-				<navigator class="goods-item">
-					<!-- 商品图片，通过loading自定义插槽，结合uView的u-loading组件，实现加载中效果 -->
-					<u--image :src=goodsItem.cover_url height="300rpx" width="300rpx" radius="10">
-					  <template v-slot:loading>
-					    <u-loading-icon color="blue"></u-loading-icon>
-					  </template>
-					</u--image>
-					<!-- 商品名称 -->
-					<view class="goodsTitle u-line-1">{{goodsItem.title}}</view>
-					<!-- 商品详细数据 -->
-					<view class="goodsDetails">
-						<view class="price">￥{{goodsItem.price}}</view>
-						<view class="sales">销量：{{goodsItem.sales}}</view>
-					</view>
-				</navigator>
+				<!-- 骨架屏 -->
+				<u-skeleton
+					    rows="3"
+						:loading="isLoading"
+						:title="false"
+						:rowsHeight="[120,15,12]"
+						rowsWidth='100'
+						class="skeleton"
+					>
+					<!-- loading为false时，将会展示此处插槽内容 -->
+						<u--text>加载失败</u--text>
 					
+					<!-- 商品卡片组件 -->
+					<goods-card :goodsItem="goodsItem"></goods-card>
+					
+					</u-skeleton>
 				</u-grid-item>
 			</u-grid>
 		</view>
@@ -77,7 +77,8 @@
 				// 轮播图图片路径数组
 				slides:[],
 				page:1,
-				currentSort:0
+				currentSort:0,
+				isLoading:true
 			}
 		},
 		async onLoad() {
@@ -138,6 +139,8 @@
 			},
 			// 获取数据
 			async getData(){
+				// 显示骨架屏
+				this.isLoading = true;
 				const params = {
 					params:{
 						page:this.page,
@@ -148,6 +151,8 @@
 				else if(this.currentSort === 2) params.params.recommend = 1; 
 				else if(this.currentSort === 3) params.params.new = 1; 
 				const res = await uni.$u.api.index(params);
+				// 隐藏骨架屏
+				this.isLoading = false;
 				this.slides = res.slides;
 				this.goods = [...this.goods,...res.goods.data]
 			}
@@ -161,28 +166,8 @@
 </script>
 
 <style lang="scss" scoped>
-	.goods-item{
-		padding: 28rpx;
-		margin-top: 20rpx;
-		box-shadow: 5rpx 15rpx 15rpx 0 rgba(0,0,0,.1);
-		border-radius: 10rpx;
-		.goodsTitle{
-			margin: 10rpx 0;
-			font-weight: 500;
-			font-size: 28rpx;
-			max-width: 300rpx;
-		}
-		.goodsDetails{
-			display: flex;
-			justify-content: space-between;
-		}
-		.price{
-			font-size: 26rpx;
-			color:red;
-		}
-		.sales{
-			font-size: 26rpx;
-			color: #888;
-		}
+	.skeleton{
+		margin-top: 30rpx;
 	}
+	
 </style>

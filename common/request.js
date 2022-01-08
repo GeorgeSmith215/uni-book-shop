@@ -30,8 +30,8 @@ module.exports = (vm) => {
 		// 根据custom参数中配置的是否需要token，添加对应的请求头
 		if(config?.custom?.auth) {
 			// 可以在此通过vm引用vuex中的变量，具体值在vm.$store.state中
-			// config.header.Authorization = "Bearer " + vm.$store.state.access_token;
-			config.header.Authorization = "Bearer " + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLnNob3AuZWR1d29yay5jblwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MTExMTgxOSwiZXhwIjoxNjQxNDcxODE5LCJuYmYiOjE2NDExMTE4MTksImp0aSI6IlFzQVg0akp0RFZ4bVR1NkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.7vCvrMK7Qpq6nRpc7gHszw58k17GBa1UvQFiq9Oqpls';
+			config.header.Authorization = "Bearer " + vm.$store.state.vuex_access_token;
+			// console.log(config.header.Authorization);
 		}
 	    return config 
 	}, config => { // 可使用async await 做异步操作
@@ -45,7 +45,7 @@ module.exports = (vm) => {
 
 		// 自定义参数
 		const custom = response.config?.custom
-		if (statusCode !== 200) { 
+		if (statusCode >= 400) {
 			// 如果没有显式定义custom的toast参数为false的话，默认对报错进行toast弹出提示
 			if (custom.toast !== false) {
 				uni.$u.toast(data.message)
@@ -69,13 +69,13 @@ module.exports = (vm) => {
 			// return false;
 		}
 		else if(statusCode === 401){
-			// 401为token失效，跳转重新登录
-			uni.$u.toast('验证失败，请重新登录');
-			setTimeout(()=>{
-				uni.$u.route({
-					url:'pages/index/index'
-				})
-			},1500);
+			// 401有两种情况，一种是认证未通过，一种是没有token或者过期
+			if(data.message == 'Unauthorized'){
+				uni.$u.toast('账号或密码错误');
+			}else{
+				// 如果请求了需要登录的API，跳转到登录
+				uni.$u.utils.isLogin();
+			}
 			// return false;
 		}
 		else if(statusCode === 422){

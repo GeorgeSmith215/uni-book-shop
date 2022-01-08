@@ -24,28 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.goods-item.data-v-57280228 {
-  padding: 28rpx;
-  margin-top: 20rpx;
-  box-shadow: 5rpx 15rpx 15rpx 0 rgba(0, 0, 0, 0.1);
-  border-radius: 10rpx;
-}
-.goods-item .goodsTitle.data-v-57280228 {
-  margin: 10rpx 0;
-  font-weight: 500;
-  font-size: 28rpx;
-  max-width: 300rpx;
-}
-.goods-item .goodsDetails.data-v-57280228 {
-  display: flex;
-  justify-content: space-between;
-}
-.goods-item .price.data-v-57280228 {
-  font-size: 26rpx;
-  color: red;
-}
-.goods-item .sales.data-v-57280228 {
-  font-size: 26rpx;
-  color: #888;
+.skeleton.data-v-57280228 {
+  margin-top: 30rpx;
 }
 

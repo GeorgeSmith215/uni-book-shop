@@ -7,6 +7,8 @@ Vue.mixin(vuexStore);
 
 // #ifndef VUE3
 import Vue from 'vue'
+import {router,RouterMount} from '@/common/router.js'  //路径换成自己的
+Vue.use(router)
 import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)
 Vue.config.productionTip = false
@@ -17,13 +19,24 @@ const app = new Vue({
     ...App
 })
 // 引入请求封装，将app参数传递到配置中
-require('@/config/request.js')(app)
+require('@/common/request.js')(app)
 
-import httpApi from '@/config/http.api.js'
+import httpApi from '@/common/http.api.js'
 Vue.use(httpApi, app)
 
-app.$mount()
+import utils from '@/common/utils.js'
+Vue.use(utils, app)
+
+//v1.3.5起 H5端 你应该去除原有的app.$mount();使用路由自带的渲染方式
+// #ifdef H5
+	RouterMount(app,router,'#app')
 // #endif
+
+// #ifndef H5
+	app.$mount(); //为了兼容小程序及app端必须这样写才有效果
+// #endif
+// app.$mount()
+// // #endif
 
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
