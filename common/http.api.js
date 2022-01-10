@@ -14,9 +14,13 @@ const install = (Vue, vm) => {
 	//认证相关的
 	vm.$u.api.authLogin = (params = {}) => vm.$u.http.post('/api/auth/login',params);  //登录
 	vm.$u.api.authRegister = params => vm.$u.http.post('/api/auth/register',params);  //注册
+	vm.$u.api.authLogout = params => vm.$u.http.post('/api/auth/logout',params);  //退出登录
+	vm.$u.api.authOssToken = params => vm.$u.http.get('/api/auth/oss/token',params);  //获取OSS token
 	
 	// 用户相关的
 	vm.$u.api.userInfo = () => vm.$u.http.get('/api/user');  //用户详情
+	vm.$u.api.userInfoUpdate = params => vm.$u.http.put('/api/user',params);  //修改用户信息
+	vm.$u.api.userAvatar = params => vm.$u.http.post('/api/user/avatar',params);  //更新用户头像
 	
 	//订单相关的
 	

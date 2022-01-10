@@ -54,11 +54,8 @@ export default {
 			// 缓存token
 			uni.$u.vuex('vuex_access_token',loginRes.access_token);
 			uni.$u.toast('登录成功');
-			// 请求用户信息
-			const userInfo = await uni.$u.api.userInfo();
-			
-			// 缓存用户信息
-			uni.$u.vuex('vuex_userInfo',userInfo)
+			// 刷新用户信息，更新vuex_user
+			this.$u.utils.updateUser();
 			// console.log(userInfo);
 			// 登录之后，跳转到来源页
 			const backUrl = uni.getStorageSync('back_url') || 'pages/index/index';

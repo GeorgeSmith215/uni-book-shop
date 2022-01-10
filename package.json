@@ -1,0 +1,26 @@
+{
+  "name": "uni_shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "uni-read-pages": "^1.0.5",
+    "uni-simple-router": "^2.0.8-beta.3",
+    "uview-ui": "file:uview-ui"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeorgeSmith215/uni-book-shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GeorgeSmith215/uni-book-shop/issues"
+  },
+  "homepage": "https://github.com/GeorgeSmith215/uni-book-shop#readme"
+}
