@@ -28,6 +28,7 @@
 				lineHeight: elLabelSize
 			}"
 		>{{label}}</text>
+		<slot name="content"></slot>
 	</view>
 </template>
 

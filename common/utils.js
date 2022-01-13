@@ -28,7 +28,7 @@ const install = (Vue, vm) => {
 		if(!token){
 			// 缓存上一页面
 			storeLastUrl();
-			vm.$u.toast('请登录');
+			vm.$u.toast('请先登录');
 			setTimeout(()=>{
 				vm.$u.route({
 					type: 'redirect',

@@ -22,6 +22,27 @@ const install = (Vue, vm) => {
 	vm.$u.api.userInfoUpdate = params => vm.$u.http.put('/api/user',params);  //修改用户信息
 	vm.$u.api.userAvatar = params => vm.$u.http.post('/api/user/avatar',params);  //更新用户头像
 	
+	// 商品相关的
+	vm.$u.api.goodsInfo = (id) => vm.$u.http.get(`/api/goods/${id}`);  //商品详情
+	vm.$u.api.goodsCollect = (id) => vm.$u.http.post(`/api/collects/goods/${id}`);  //商品收藏
+	vm.$u.api.goodsList = (params = {}) => vm.$u.http.get('/api/goods',params);  //获取商品列表
+	vm.$u.api.collects = (params = {}) => vm.$u.http.get(`/api/collects`,params);// 我的收藏
+	
+	// 购物车相关的
+	vm.$u.api.cartsAdd = (params = {}) => vm.$u.http.post('/api/carts',params);// 加入购物车
+	vm.$u.api.cartsList = (params = {}) => vm.$u.http.get(`/api/carts?include=goods`,params);// 获取购物车列表
+	vm.$u.api.cartsNum = (cartId,params = {}) => vm.$u.http.put(`/api/carts/${cartId}`,params);// 购物车数量变化
+	vm.$u.api.cartsDel = cartId => vm.$u.http.delete(`/api/carts/${cartId}`);// 移出购物车
+	vm.$u.api.cartsChecked = (params = {}) => vm.$u.http.patch(`/api/carts/checked`,params);// 购物车改变选中
+	
+	// 地址相关的
+	vm.$u.api.addressList = () => vm.$u.http.get(`/api/address`);// 地址列表
+	vm.$u.api.addressAdd = params => vm.$u.http.post(`/api/address`,params);// 新增地址
+	vm.$u.api.addressDetail = id => vm.$u.http.get(`/api/address/${id}`);// 地址详情
+	vm.$u.api.addressEdit = (id,params) => vm.$u.http.put(`/api/address/${id}`,params);// 地址详情
+	vm.$u.api.addressDefault = id => vm.$u.http.patch(`/api/address/${id}/default`);// 设置默认地址
+	vm.$u.api.addressDel = id => vm.$u.http.delete(`/api/address/${id}`);// 删除地址
+	
 	//订单相关的
 	
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$u.api(因为vm就是this，也即uni.$u.api)下

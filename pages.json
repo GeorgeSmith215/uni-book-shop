@@ -35,7 +35,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "购物车",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -63,6 +63,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "修改个人信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/goods/goodsInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品详情",
                 "enablePullDownRefresh": false
             }
             

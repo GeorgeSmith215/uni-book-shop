@@ -1,5 +1,5 @@
 <template>
-	<navigator class="goods-item">
+	<navigator class="goods-item" :url="'/pages/goods/goodsInfo?id=' + goodsItem.id">
 		<!-- 商品图片，通过loading自定义插槽，结合uView的u-loading组件，实现加载中效果 -->
 		<u--image :src="goodsItem.cover_url" height="300rpx" width="300rpx" radius="10">
 		  <template v-slot:loading>

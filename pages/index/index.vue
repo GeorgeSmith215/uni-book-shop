@@ -2,7 +2,7 @@
 	<view class="content">
 		<!-- swiper滑动窗 -->
 		<!-- #ifndef APP-NVUE || MP-TOUTIAO -->
-		<view class="u-demo-block">
+		<view>
 			<u-swiper
 					:list="slides"
 					keyName="img_url"
@@ -19,7 +19,7 @@
 		
 		<!-- 标签选择 -->
 		<view>
-			<u-tabs :list="tabs" lineWidth='50' :scrollable=false @change="sortChange" sticky></u-tabs>
+			<u-tabs :list="sorts" lineWidth='50' :scrollable="false" @change="sortChange" sticky></u-tabs>
 		</view>
 		
 		<!-- 商品布局 -->
@@ -61,7 +61,7 @@
 		data() {
 			return {
 				// 标签名数组
-				tabs: [
+				sorts: [
 					{
 						name: '默认',
 					}, {
@@ -134,8 +134,8 @@
 				this.page = 1;
 				this.getData();
 			},
-			click(id) {
-				console.log(this.$data.goodsList[id]);
+			click(event) {
+				console.log(event);
 			},
 			// 获取数据
 			async getData(){

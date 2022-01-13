@@ -8,7 +8,8 @@
 			<button @tap="$u.throttle(submit, 500)" :style="[inputStyle]" class="getCaptcha">登录</button>
 			<view class="alternative">
 				<!-- <view class="password">暂不支持找回密码</view> -->
-				<view class="issue" @tap="register">注册</view>
+				<view class="issue" @tap="jump('pages/auth/register')">注册</view>
+				<view class="issue" @tap="jump('pages/index/index')">先四处看看</view>
 			</view>
 		</view>
 	</view>
@@ -36,9 +37,9 @@ export default {
 		}
 	},
 	methods: {
-		register(){
+		jump(url){
 			uni.$u.route({
-				url:'pages/auth/register'
+				url
 			});
 		},
 		async submit() {
