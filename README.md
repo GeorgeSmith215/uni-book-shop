@@ -6,9 +6,9 @@ QRCode：
 ![uniapp小书店](./MDimages/QRCode.png "uniapp小书店")    
 
 界面展示：
-![首页](./MDimages/homePage.png  "首页")    
-![商品详情](./MDimages/goodsInfo.png  "商品详情")    
-![商品页](./MDimages/goods.png  "商品页")    
-![登录](./MDimages/login.png  "登录")    
-![购物车](./MDimages/cart.png  "购物车")    
-![个人中心](./MDimages/center.png  "个人中心")    
+![首页](./MDimages/homePage.jpeg  "首页")    
+![商品详情](./MDimages/goodsInfo.jpeg  "商品详情")    
+![商品页](./MDimages/goods.jpeg  "商品页")    
+![登录](./MDimages/login.jpeg  "登录")    
+![购物车](./MDimages/cart.jpeg  "购物车")    
+![个人中心](./MDimages/center.jpeg  "个人中心")    
