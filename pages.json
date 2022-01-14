@@ -76,6 +76,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/center/collection",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的收藏",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

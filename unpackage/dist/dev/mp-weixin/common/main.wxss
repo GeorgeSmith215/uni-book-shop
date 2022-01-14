@@ -24,7 +24,6 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-/*每个页面公共css */
 .u-line-1 {
   overflow: hidden;
   white-space: nowrap;
@@ -251,4 +250,5 @@
   -webkit-appearance: none;
   background: transparent;
 }
+/*每个页面公共css */
 

@@ -1,0 +1,8 @@
+
+.userForm{
+	margin: 0 50rpx;
+}
+.formBtn{
+	margin: 20rpx 0;
+}
+

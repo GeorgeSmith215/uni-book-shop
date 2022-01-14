@@ -18,9 +18,9 @@
 		
 		<view class="cell-group">
 			<u-cell-group>
-				<u-cell icon="rmb-circle" title="所有订单" rightIcon='arrow-right' :isLink="true"  arrow-direction="right" size="large"></u-cell>
-				<u-cell icon="star" title="商品收藏" :isLink="true"  arrow-direction="right" size="large"></u-cell>
-				<u-cell icon="home" title="收货地址" :isLink="true"  arrow-direction="right" size="large"></u-cell>
+				<!-- <u-cell icon="rmb-circle" title="所有订单" rightIcon='arrow-right' :isLink="true"  arrow-direction="right" size="large"></u-cell> -->
+				<u-cell icon="star" title="商品收藏" :isLink="true"  arrow-direction="right" size="large" @click="toCollection"></u-cell>
+				<!-- <u-cell icon="home" title="收货地址" :isLink="true"  arrow-direction="right" size="large"></u-cell> -->
 			</u-cell-group>
 		</view>
 		
@@ -68,7 +68,13 @@
 						url: 'Pages/index/index'
 					})
 				},1500);
-			}
+			},
+			// 跳转到我的收藏
+			toCollection(){
+				this.$u.route({
+					url: `pages/center/collection`
+				})
+			},
 		}
 	}
 </script>

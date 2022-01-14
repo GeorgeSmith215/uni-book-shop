@@ -63,27 +63,8 @@
 .wrap .content .alternative.data-v-cbd6070a {
   color: #909193;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   margin-top: 30rpx;
-}
-.wrap .buttom .loginType.data-v-cbd6070a {
-  display: flex;
-  padding: 350rpx 150rpx 150rpx 150rpx;
-  justify-content: space-between;
-}
-.wrap .buttom .loginType .item.data-v-cbd6070a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #606266;
-  font-size: 28rpx;
-}
-.wrap .buttom .hint.data-v-cbd6070a {
-  padding: 20rpx 40rpx;
-  font-size: 20rpx;
-  color: #909193;
-}
-.wrap .buttom .hint .link.data-v-cbd6070a {
-  color: #f9ae3d;
 }
 

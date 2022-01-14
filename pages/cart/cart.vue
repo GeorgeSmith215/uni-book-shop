@@ -1,13 +1,15 @@
 <template>
 	<view>
-		<view class="container">
-			<view v-if="cartList.length" class="cartItem" v-for="(item, index) in cartList" :key="item.id">
+		<view v-if="cartList.length" class="container">
+			<view class="cartItem" v-for="(item, index) in cartList" :key="item.id">
 				<view class="left">
 					<jiuai-checkbox :value="item.id" @change="changeCheck" ref='checkedBox' :checked="item.is_checked ? true : false"></jiuai-checkbox>
 				</view>
 				<view class="image">
-					<u-image width="200rpx" height="240rpx" border-radius="20"
-						:src="item.goods.cover_url"></u-image>
+					<navigator :url="`/pages/goods/goodsInfo?id=${item.goods_id}`">
+						<u-image width="200rpx" height="240rpx" border-radius="20"
+							:src="item.goods.cover_url"></u-image>
+					</navigator>
 				</view>
 				<view class="right">
 					<view class="top">
@@ -27,9 +29,9 @@
 					</view>
 				</view>
 			</view>
-			<view class="empty" v-else>
-				<u-empty text="购物车空空如也" mode="car"></u-empty>
-			</view>
+		</view>
+		<view v-else class="empty">
+			<u-empty text="购物车空空如也" mode="car"></u-empty>
 		</view>
 		<view class="footer">
 			<view class="checkboxAll">
@@ -138,7 +140,7 @@
 					});
 				},
 				set(val){
-					console.log(val);
+					// console.log(val);
 				}
 			}
 		},
@@ -160,6 +162,7 @@
 			async getCartList(){
 				const res = await this.$u.api.cartsList();
 				this.cartList = res.data;
+				// console.log(res);
 			},
 			// 移除购物车数据
 			del(id) {
@@ -271,6 +274,14 @@
 						width: 100%;
 						text-align: left;
 					}
+					.title{
+						font-size: 34rpx;
+					}
+					
+					.desc{
+						font-size: 28rpx;
+						color: gery;
+					}
 				}
 
 				.bottom {
@@ -299,7 +310,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		bottom: 100rpx;
+		bottom: 8vh;
 		height: 100rpx;
 		line-height: 100rpx;
 		width: 100%;

@@ -1,0 +1,7 @@
+
+.userAvatar{
+	width: 180rpx;
+	height: 180rpx;
+	border-radius: 30rpx;
+}
+

@@ -51,6 +51,10 @@
 					</u-skeleton>
 				</u-grid-item>
 			</u-grid>
+			<!-- 底部加载提示 -->
+			<u-loadmore :status="isShowLoading" icon-color="#2979ff" color="#2979ff" />
+			<!-- 返回顶部 -->
+			<u-back-top :scroll-top="scrollTop"></u-back-top>
 		</view>
 			
 	</view>
@@ -76,9 +80,11 @@
 				goods: [],
 				// 轮播图图片路径数组
 				slides:[],
-				page:1,
-				currentSort:0,
-				isLoading:true
+				page:1,  //当前页数
+				currentSort:0,  //当前分类
+				isLoading:true, //骨架屏显示
+				scrollTop: 0,
+				isShowLoading:'loading',  //底部加载显示
 			}
 		},
 		async onLoad() {
@@ -139,8 +145,8 @@
 			},
 			// 获取数据
 			async getData(){
-				// 显示骨架屏
-				this.isLoading = true;
+				// 第一次获取数据时显示骨架屏
+				if(this.goods.length === 0) this.isLoading = true;
 				const params = {
 					params:{
 						page:this.page,
@@ -154,13 +160,21 @@
 				// 隐藏骨架屏
 				this.isLoading = false;
 				this.slides = res.slides;
-				this.goods = [...this.goods,...res.goods.data]
+				this.goods.push(...res.goods.data)
+				// this.goods = [...this.goods,...res.goods.data]
 			}
 		},
 		onReachBottom() {
 			// 重新请求数据，带上分页参数
-			this.page = this.page+1;
-			this.getData();
+			if(this.goods.length % 10 ==0){
+				this.Page++
+				this.getData()
+			}else{
+				this.isShowLoading="nomore"
+			}
+		},
+		onPageScroll(e) {
+			this.scrollTop = e.scrollTop;
 		}
 	}
 </script>

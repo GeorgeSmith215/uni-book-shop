@@ -134,7 +134,7 @@
 			// 获取商品信息接口
 			async getBaseInfo(){
 				const res = await this.$u.api.goodsInfo(this.goodsId);
-				console.log(res);
+				// console.log(res);
 				// 商品基本信息
 				this.goods = res.goods
 				// 是否收藏

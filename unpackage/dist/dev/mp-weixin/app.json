@@ -4,7 +4,11 @@
     "pages/center/center",
     "pages/goods/goods",
     "pages/cart/cart",
-    "pages/auth/login"
+    "pages/auth/login",
+    "pages/auth/register",
+    "pages/center/baseInfo",
+    "pages/goods/goodsInfo",
+    "pages/center/collection"
   ],
   "subPackages": [],
   "window": {
@@ -45,5 +49,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

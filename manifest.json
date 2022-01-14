@@ -68,5 +68,11 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "h5" : {
+        "title" : "小书店",
+        "router" : {
+            "base" : "./"
+        }
+    }
 }
